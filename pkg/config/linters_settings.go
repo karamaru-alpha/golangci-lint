@@ -315,7 +315,7 @@ type BiDiChkSettings struct {
 }
 
 type CopyLoopVarSettings struct {
-	IgnoreAlias bool `mapstructure:"ignore-alias"`
+	CheckAlias bool `mapstructure:"check-alias"`
 }
 
 type Cyclop struct {
