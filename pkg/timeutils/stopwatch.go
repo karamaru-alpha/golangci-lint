@@ -71,6 +71,19 @@ func (s *Stopwatch) sprintTopStages(n int) string {
 
 	stageDurations := s.stageDurationsSorted()
 
+	type stageDurationDetail struct {
+		name string
+		ms   int
+	}
+	details := make([]stageDurationDetail, 0, len(stageDurations))
+	for _, v := range stageDurations {
+		details = append(details, stageDurationDetail{
+			name: v.name,
+			ms:   int(v.d.Milliseconds()),
+		})
+	}
+	panic(fmt.Sprintf("%+v", details))
+
 	var stagesStrings []string
 	for i := 0; i < len(stageDurations) && i < n; i++ {
 		s := stageDurations[i]
