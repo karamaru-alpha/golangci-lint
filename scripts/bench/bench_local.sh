@@ -33,18 +33,18 @@ trap cleanBinaries EXIT
 
 ## Download version
 
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "./temp-${VERSION}" "${VERSION}"
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b "./temp-${VERSION}" "${VERSION}"
 
 mv "temp-${VERSION}/golangci-lint" "./golangci-lint-${VERSION}"
 rm -rf "temp-${VERSION}"
 
 ## Build local version
+## use `go build` to set ldflags (it reduces some performance differences with binaries created by goreleaser)
 
-make build
+go build -trimpath -ldflags '-s -w' -o golangci-lint ./cmd/golangci-lint
 
 ## Run
 
-hyperfine \
---prepare './golangci-lint cache clean' "./golangci-lint run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}" \
---prepare "./golangci-lint-${VERSION} cache clean" "./golangci-lint-${VERSION} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}"
-
+hyperfine --warmup 1 \
+-n 'local' --prepare './golangci-lint cache clean' "./golangci-lint run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}" \
+-n "${VERSION}" --prepare "./golangci-lint-${VERSION} cache clean" "./golangci-lint-${VERSION} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}"

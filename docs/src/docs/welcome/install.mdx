@@ -25,19 +25,31 @@ Also, the action creates GitHub annotations for found issues (you don't need to 
 
 ![GitHub annotations of the action](./annotations.png)
 
+### GitLab CI
+
+GitLab provides a [guide for integrating golangci-lint into the Code Quality widget](https://docs.gitlab.com/ci/testing/code_quality/#golangci-lint).
+A simple quickstart is their [CI component](https://gitlab.com/explore/catalog/components/code-quality-oss/codequality-os-scanners-integration), which can be used like this:
+
+```yaml .gitlab-ci.yml
+include:
+  - component: $CI_SERVER_FQDN/components/code-quality-oss/codequality-os-scanners-integration/golangci@1.0.1
+```
+
+Note that you [can only reference components in the same GitLab instance as your project](https://docs.gitlab.com/ci/components/#use-a-component)
+
 ### Other CI
 
 Here is the other way to install golangci-lint:
 
 ```sh
 # binary will be $(go env GOPATH)/bin/golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin {.LatestVersion}
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin {.LatestVersion}
 
 # or install it into ./bin/
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s {.LatestVersion}
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s {.LatestVersion}
 
 # In Alpine Linux (as it does not come with curl by default)
-wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s {.LatestVersion}
+wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s {.LatestVersion}
 
 golangci-lint --version
 ```
@@ -47,11 +59,13 @@ and is constantly being improved. For any problems with `golangci-lint`, check o
 
 ## Local Installation
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/golangci-lint.svg)](https://repology.org/project/golangci-lint/versions)
+
 ### Binaries
 
 ```sh
 # binary will be $(go env GOPATH)/bin/golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin {.LatestVersion}
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin {.LatestVersion}
 
 golangci-lint --version
 ```
@@ -130,30 +144,25 @@ Colored output:
 docker run -t --rm -v $(pwd):/app -w /app golangci/golangci-lint:{.LatestVersion} golangci-lint run -v
 ```
 
-### Install from Source
+### Install from Sources
 
-Note: such `go install`/`go get` installation aren't guaranteed to work. We recommend using binary installation.
+Using `go install`/`go get`, "tools pattern", and `tool` command/directives installations aren't guaranteed to work.
 
-<details>
-<summary>Why?</summary>
+We recommend using binary installation.
 
-`go install`/`go get` installation isn't recommended because of the following points:
+These installations aren't recommended because of the following points:
 
-1. Some users use `-u` flag for `go get`, which upgrades our dependencies. Resulting configuration wasn't tested and isn't guaranteed to work.
-2. [`go.mod`](https://github.com/golangci/golangci-lint/blob/master/go.mod) replacement directive doesn't apply. It means a user will be using patched version of `golangci-lint` if we use such replacements.
-3. We've encountered a lot of issues with Go modules hashes.
-4. It allows installation from `master` branch which can't be considered stable.
-5. It's slower than binary installation.
-
-</details>
-
-<div style="margin-top: 2em;">
+1. These installations compile golangci-lint locally. The Go version used to build will depend on your local Go version.
+2. Some users use the `-u` flag for `go get`, which upgrades our dependencies. The resulting binary was not tested and is not guaranteed to work.
+3. When using the "tools pattern" or `tool` command/directives, the dependencies of a tool can modify the dependencies of another tool or your project. The resulting binary was not tested and is not guaranteed to work.
+4. We've encountered issues with Go module hashes due to the unexpected recreation of dependency tags.
+5. `go.mod` replacement directives don't apply transitively. It means a user will be using a patched version of `golangci-lint` if we use such replacements.
+6. It allows installation from the main branch, which can't be considered stable.
+7. It's slower than binary installation.
 
 ```sh
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@{.LatestVersion}
 ```
-
-</div>
 
 ## Next
 

@@ -101,7 +101,6 @@ func TestCgoOk(t *testing.T) {
 		WithArgs("--timeout=3m",
 			"--enable-all",
 		).
-		WithArgs("--go=1.22"). // TODO(ldez) remove this line when we will run go1.23 on the CI. (related to intrange, copyloopvar)
 		WithTargetPath(testdataDir, "cgo").
 		Runner().
 		Install().
@@ -134,7 +133,7 @@ func TestCgoWithIssues(t *testing.T) {
 			desc:     "gofmt",
 			args:     []string{"--no-config", "--disable-all", "-Egofmt"},
 			dir:      "cgo_with_issues",
-			expected: "File is not `gofmt`-ed with `-s` (gofmt)",
+			expected: "File is not properly formatted (gofmt)",
 		},
 		{
 			desc:     "revive",
@@ -145,7 +144,6 @@ func TestCgoWithIssues(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
@@ -188,7 +186,7 @@ func TestLineDirective(t *testing.T) {
 				"--disable-all",
 			},
 			targetPath: "linedirective",
-			expected:   "File is not `gofmt`-ed with `-s` (gofmt)",
+			expected:   "File is not properly formatted (gofmt)",
 		},
 		{
 			desc: "goimports",
@@ -197,7 +195,7 @@ func TestLineDirective(t *testing.T) {
 				"--disable-all",
 			},
 			targetPath: "linedirective",
-			expected:   "File is not `goimports`-ed (goimports)",
+			expected:   "File is not properly formatted (goimports)",
 		},
 		{
 			desc: "gomodguard",
@@ -218,7 +216,7 @@ func TestLineDirective(t *testing.T) {
 			},
 			configPath: "testdata/linedirective/lll.yml",
 			targetPath: "linedirective",
-			expected:   "the line is 57 characters long, which exceeds the maximum of 50 characters. (lll)",
+			expected:   "The line is 57 characters long, which exceeds the maximum of 50 characters. (lll)",
 		},
 		{
 			desc: "misspell",
@@ -243,7 +241,6 @@ func TestLineDirective(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
@@ -302,7 +299,6 @@ func TestLineDirectiveProcessedFiles(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
@@ -323,7 +319,6 @@ func TestUnsafeOk(t *testing.T) {
 	testshared.NewRunnerBuilder(t).
 		WithNoConfig().
 		WithArgs("--enable-all").
-		WithArgs("--go=1.22"). // TODO(ldez) remove this line when we will run go1.23 on the CI. (related to intrange, copyloopvar)
 		WithTargetPath(testdataDir, "unsafe").
 		Runner().
 		Install().
@@ -351,7 +346,6 @@ func TestSortedResults(t *testing.T) {
 	binPath := testshared.InstallGolangciLint(t)
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.opt, func(t *testing.T) {
 			t.Parallel()
 
@@ -439,7 +433,6 @@ func TestConfigFileIsDetected(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
@@ -477,14 +470,12 @@ func TestEnableAllFastAndEnableCanCoexist(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
 			testshared.NewRunnerBuilder(t).
 				WithNoConfig().
 				WithArgs(test.args...).
-				WithArgs("--go=1.22"). // TODO(ldez) remove this line when we will run go1.23 on the CI. (related to intrange, copyloopvar)
 				WithTargetPath(testdataDir, minimalPkg).
 				WithBinPath(binPath).
 				Runner().
@@ -562,7 +553,6 @@ func TestPathPrefix(t *testing.T) {
 	binPath := testshared.InstallGolangciLint(t)
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			testshared.NewRunnerBuilder(t).
 				WithArgs(test.args...).

@@ -64,11 +64,10 @@ func TestPrinter_Print_stdout(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
-			p, err := NewPrinter(logger, test.cfg, data)
+			p, err := NewPrinter(logger, test.cfg, data, "")
 			require.NoError(t, err)
 
 			var stdOutBuffer bytes.Buffer
@@ -107,7 +106,7 @@ func TestPrinter_Print_stderr(t *testing.T) {
 		},
 	}
 
-	p, err := NewPrinter(logger, cfg, data)
+	p, err := NewPrinter(logger, cfg, data, "")
 	require.NoError(t, err)
 
 	var stdOutBuffer bytes.Buffer
@@ -146,7 +145,7 @@ func TestPrinter_Print_file(t *testing.T) {
 		},
 	}
 
-	p, err := NewPrinter(logger, cfg, data)
+	p, err := NewPrinter(logger, cfg, data, "")
 	require.NoError(t, err)
 
 	var stdOutBuffer bytes.Buffer
@@ -198,7 +197,7 @@ func TestPrinter_Print_multiple(t *testing.T) {
 		},
 	}
 
-	p, err := NewPrinter(logger, cfg, data)
+	p, err := NewPrinter(logger, cfg, data, "")
 	require.NoError(t, err)
 
 	var stdOutBuffer bytes.Buffer
@@ -226,5 +225,5 @@ func TestPrinter_Print_multiple(t *testing.T) {
 	goldenJSON, err := os.ReadFile(filepath.Join("testdata", "golden-json.json"))
 	require.NoError(t, err)
 
-	assert.Equal(t, string(goldenJSON), stdOutBuffer.String())
+	assert.JSONEq(t, string(goldenJSON), stdOutBuffer.String())
 }

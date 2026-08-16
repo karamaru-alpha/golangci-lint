@@ -9,7 +9,7 @@ import (
 )
 
 func GovetComposites() error {
-	return &os.PathError{"first", "path", os.ErrNotExist} // want "composites: io/fs\\.PathError struct literal uses unkeyed fields"
+	return &os.PathError{"first", "path", os.ErrNotExist} // want "composites: (os|io/fs)\\.PathError struct literal uses unkeyed fields"
 }
 
 func GovetShadow(f io.Reader, buf []byte) (err error) {
@@ -39,5 +39,5 @@ func GovetPrintf() {
 
 func GovetStringIntConv() {
 	i := 42
-	fmt.Println("i = " + string(i)) // want "stringintconv: conversion from int to string yields a string of one rune, not a string of digits \\(did you mean fmt.Sprint\\(x\\)\\?\\)"
+	fmt.Println("i = " + string(i)) // want "stringintconv: conversion from int to string yields a string of one rune, not a string of digits"
 }

@@ -3,4 +3,5 @@ linters-settings:
     kitlog: true
     klog: false
     logr: false
+    slog: false
     zap: false

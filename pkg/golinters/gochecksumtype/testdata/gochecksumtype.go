@@ -29,6 +29,12 @@ func sumTypeTest() {
 		panic("??")
 	}
 
+	switch sum.(type) {
+	case *One:
+	default:
+		log.Println("legit catch all goes here")
+	}
+
 	log.Println("??")
 
 	switch sum.(type) {

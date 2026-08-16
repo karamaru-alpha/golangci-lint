@@ -13,18 +13,19 @@
         "badLock",
         "badRegexp",
         "badSorting",
+        "badSyncOnceFunc",
         "boolExprSimplify",
         "builtinShadow",
         "builtinShadowDecl",
         "captLocal",
         "caseOrder",
         "codegenComment",
+        "commentFormatting",
         "commentedOutCode",
         "commentedOutImport",
-        "commentFormatting",
         "defaultCaseOrder",
-        "deferUnlambda",
         "deferInLoop",
+        "deferUnlambda",
         "deprecatedComment",
         "docStub",
         "dupArg",
@@ -67,6 +68,7 @@
         "preferStringWriter",
         "preferWriteByte",
         "ptrToRefParam",
+        "rangeAppendAll",
         "rangeExprCopy",
         "rangeValCopy",
         "redundantSprint",
@@ -84,13 +86,12 @@
         "sprintfQuotedString",
         "sqlQuery",
         "stringConcatSimplify",
-        "stringsCompare",
         "stringXbytes",
-        "suspiciousSorting",
+        "stringsCompare",
         "switchTrue",
         "syncMapLoadAndDelete",
-        "timeCmpSimplify",
         "timeExprSimplify",
+        "todoCommentWithoutDetail",
         "tooManyResultsChecker",
         "truncateCmp",
         "typeAssertChain",
@@ -137,6 +138,7 @@
         "G112",
         "G113",
         "G114",
+        "G115",
         "G201",
         "G202",
         "G203",
@@ -152,11 +154,15 @@
         "G402",
         "G403",
         "G404",
+        "G405",
+        "G406",
         "G501",
         "G502",
         "G503",
         "G504",
         "G505",
+        "G506",
+        "G507",
         "G601",
         "G602"
       ]
@@ -194,15 +200,18 @@
         "slog",
         "sortslice",
         "stdmethods",
+        "stdversion",
         "stringintconv",
         "structtag",
         "testinggoroutine",
         "tests",
+        "timeformat",
         "unmarshal",
         "unreachable",
         "unsafeptr",
         "unusedresult",
-        "unusedwrite"
+        "unusedwrite",
+        "waitgroup"
       ]
     },
     "revive-rules": {
@@ -217,6 +226,7 @@
         "call-to-gc",
         "cognitive-complexity",
         "comment-spacings",
+        "comments-density",
         "confusing-naming",
         "confusing-results",
         "constant-logical-expr",
@@ -240,6 +250,8 @@
         "errorf",
         "exported",
         "file-header",
+        "file-length-limit",
+        "filename-format",
         "flag-parameter",
         "function-length",
         "function-result-limit",
@@ -259,11 +271,12 @@
         "nested-structs",
         "optimize-operands-order",
         "package-comments",
-        "range",
         "range-val-address",
         "range-val-in-closure",
+        "range",
         "receiver-naming",
         "redefines-builtin-id",
+        "redundant-build-tag",
         "redundant-import-alias",
         "string-format",
         "string-of-int",
@@ -281,10 +294,34 @@
         "unused-parameter",
         "unused-receiver",
         "use-any",
+        "use-errors-new",
         "useless-break",
         "var-declaration",
         "var-naming",
         "waitgroup-by-value"
+      ]
+    },
+    "iface-analyzers": {
+      "enum": [
+        "identical",
+        "unused",
+        "opaque"
+      ]
+    },
+    "tagliatelle-cases": {
+      "enum": [
+        "camel",
+        "pascal",
+        "kebab",
+        "snake",
+        "goCamel",
+        "goPascal",
+        "goKebab",
+        "goSnake",
+        "upper",
+        "upperSnake",
+        "lower",
+        "header"
       ]
     },
     "linters": {
@@ -302,7 +339,6 @@
             "contextcheck",
             "copyloopvar",
             "cyclop",
-            "deadcode",
             "decorder",
             "depguard",
             "dogsled",
@@ -313,11 +349,9 @@
             "errchkjson",
             "errname",
             "errorlint",
-            "execinquery",
             "exhaustive",
-            "exhaustivestruct",
             "exhaustruct",
-            "exportloopref",
+            "exptostd",
             "fatcontext",
             "forbidigo",
             "forcetypeassert",
@@ -339,7 +373,6 @@
             "gofumpt",
             "goheader",
             "goimports",
-            "golint",
             "gomoddirectives",
             "gomodguard",
             "goprintffuncname",
@@ -348,19 +381,17 @@
             "gosmopolitan",
             "govet",
             "grouper",
-            "ifshort",
+            "iface",
             "importas",
             "inamedparam",
             "ineffassign",
             "interfacebloat",
-            "interfacer",
             "intrange",
             "ireturn",
             "lll",
             "loggercheck",
             "maintidx",
             "makezero",
-            "maligned",
             "mirror",
             "misspell",
             "mnd",
@@ -368,12 +399,12 @@
             "nakedret",
             "nestif",
             "nilerr",
+            "nilnesserr",
             "nilnil",
             "nlreturn",
             "noctx",
             "nolintlint",
             "nonamedreturns",
-            "nosnakecase",
             "nosprintfhostport",
             "paralleltest",
             "perfsprint",
@@ -382,13 +413,12 @@
             "promlinter",
             "protogetter",
             "reassign",
+            "recvcheck",
             "revive",
             "rowserrcheck",
-            "scopelint",
             "sloglint",
             "sqlclosecheck",
             "staticcheck",
-            "structcheck",
             "stylecheck",
             "tagalign",
             "tagliatelle",
@@ -398,12 +428,11 @@
             "testpackage",
             "thelper",
             "tparallel",
-            "typecheck",
             "unconvert",
             "unparam",
             "unused",
             "usestdlibvars",
-            "varcheck",
+            "usetesting",
             "varnamelen",
             "wastedassign",
             "whitespace",
@@ -415,6 +444,14 @@
         {
           "type": "string"
         }
+      ]
+    },
+    "relative-path-modes": {
+      "enum": [
+        "gomod",
+        "gitroot",
+        "cfg",
+        "wd"
       ]
     }
   },
@@ -435,9 +472,9 @@
         "timeout": {
           "description": "Timeout for the analysis.",
           "type": "string",
-          "pattern": "^\\d*[sm]$",
+          "pattern": "^((\\d+h)?(\\d+m)?(\\d+(?:\\.\\d)?s)?|0)$",
           "default": "1m",
-          "examples": ["30s", "5m"]
+          "examples": ["30s", "5m", "5m30s"]
         },
         "issues-exit-code": {
           "description": "Exit code when at least one issue was found.",
@@ -476,6 +513,12 @@
           "description": "Targeted Go version.",
           "type": "string",
           "default": "1.17"
+        },
+        "relative-path-mode": {
+          "description": "The mode used to evaluate relative paths.",
+          "type": "string",
+          "$ref": "#/definitions/relative-path-modes",
+          "default": "wd"
         }
       }
     },
@@ -514,6 +557,7 @@
                   "checkstyle",
                   "code-climate",
                   "junit-xml",
+                  "junit-xml-extended",
                   "github-actions",
                   "teamcity",
                   "sarif"
@@ -530,11 +574,6 @@
         },
         "print-linter-name": {
           "description": "Print linter name in the end of issue text.",
-          "type": "boolean",
-          "default": true
-        },
-        "uniq-by-line": {
-          "description": "Make issues output unique by line.",
           "type": "boolean",
           "default": true
         },
@@ -995,6 +1034,17 @@
             }
           }
         },
+        "fatcontext": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "check-struct-pointers": {
+              "description": "Check for potential fat contexts in struct pointers.",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
         "forbidigo": {
           "type": "object",
           "additionalProperties": false,
@@ -1012,7 +1062,7 @@
             "forbid": {
               "description": "List of identifiers to forbid (written using `regexp`)",
               "type": "array",
-              "examples": ["^print.*$"],
+              "examples": ["^print(ln)?$"],
               "items": {
                 "anyOf": [
                   {
@@ -1093,8 +1143,23 @@
               "type": "boolean",
               "default": true
             },
+            "no-inline-comments": {
+              "description": "Checks that no inline Comments are present.",
+              "type": "boolean",
+              "default": false
+            },
+            "no-prefix-comments": {
+              "description": "Checks that no prefix Comments(comment lines above an import) are present.",
+              "type": "boolean",
+              "default": false
+            },
             "custom-order": {
               "description": "Enable custom order of sections.",
+              "type": "boolean",
+              "default": false
+            },
+            "no-lex-order": {
+              "description": "Drops lexical ordering for custom sections.",
               "type": "boolean",
               "default": false
             }
@@ -1156,6 +1221,27 @@
             },
             "forbid-spec-pollution": {
               "description": "Trigger a warning for variable assignments in ginkgo containers like `Describe`, `Context` and `When`, instead of in `BeforeEach()`.",
+              "type": "boolean",
+              "default": false
+            },
+            "force-succeed": {
+              "description": "Force using the Succeed matcher for error functions, and the HaveOccurred matcher for non-function error values.",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "gochecksumtype": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default-signifies-exhaustive": {
+              "description": "Presence of `default` case in switch statements satisfies exhaustiveness, if all members are not listed.",
+              "type": "boolean",
+              "default": true
+            },
+            "include-shared-interfaces": {
+              "description": "Include shared interfaces in the exhaustiviness check.",
               "type": "boolean",
               "default": false
             }
@@ -1621,12 +1707,36 @@
             "retract-allow-no-explanation": {
               "description": "Allow to not explain why the version has been retracted in the `retract` directives.",
               "type": "boolean",
-              "default": true
+              "default": false
             },
             "exclude-forbidden": {
               "description": "Forbid the use of the `exclude` directives.",
               "type": "boolean",
-              "default": true
+              "default": false
+            },
+            "toolchain-forbidden": {
+              "description": "Forbid the use of the `toolchain` directive.",
+              "type": "boolean",
+              "default": false
+            },
+            "toolchain-pattern": {
+              "description": "Defines a pattern to validate `toolchain` directive.",
+              "type": "string"
+            },
+            "tool-forbidden": {
+              "description": "Forbid the use of the `tool` directives.",
+              "type": "boolean",
+              "default": false
+            },
+            "go-debug-forbidden": {
+              "description": "Forbid the use of the `godebug` directive.",
+              "type": "boolean",
+              "default": false
+            },
+            "go-version-pattern": {
+              "description": "Defines a pattern to validate `go` minimum version directive.",
+              "type": "string",
+              "default": ""
             }
           }
         },
@@ -1897,6 +2007,37 @@
             }
           }
         },
+        "iface": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enable": {
+              "description": "Enable analyzers by name.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/iface-analyzers"
+              }
+            },
+            "settings": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "unused": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "exclude": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "importas": {
           "type": "object",
           "additionalProperties": false,
@@ -2051,6 +2192,11 @@
               "type": "boolean",
               "default": true
             },
+            "slog": {
+              "description": "Allow check for the log/slog library.",
+              "type": "boolean",
+              "default": true
+            },
             "zap": {
               "description": "Allow check for the \"sugar logger\" from go.uber.org/zap library.",
               "type": "boolean",
@@ -2164,13 +2310,18 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "detect-opposite": {
+              "type": "boolean",
+              "description": "In addition, detect opposite situation (simultaneous return of non-nil error and valid value).",
+              "default": false
+            },
             "checked-types": {
               "type": "array",
               "description": "List of return types to check.",
               "items": {
-                "enum": ["ptr", "func", "iface", "map", "chan", "uintptr", "unsafeptr"]
+                "enum": ["chan", "func", "iface", "map", "ptr", "uintptr", "unsafeptr"]
               },
-              "default": ["ptr", "func", "iface", "map", "chan", "uintptr", "unsafeptr"]
+              "default": ["chan", "func", "iface", "map", "ptr", "uintptr", "unsafeptr"]
             }
           }
         },
@@ -2271,6 +2422,24 @@
             }
           }
         },
+        "recvcheck": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "disable-builtin": {
+              "description": "Disables the built-in method exclusions.",
+              "type": "boolean",
+              "default": true
+            },
+            "exclusions": {
+              "description": "User-defined method exclusions.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "nonamedreturns": {
           "type": "object",
           "additionalProperties": false,
@@ -2302,8 +2471,18 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "integer-format": {
+              "description": "Enable/disable optimization of integer formatting.",
+              "type": "boolean",
+              "default": true
+            },
             "int-conversion": {
               "description": "Optimizes even if it requires an int or uint type cast.",
+              "type": "boolean",
+              "default": true
+            },
+            "error-format": {
+              "description": "Enable/disable optimization of error formatting.",
               "type": "boolean",
               "default": true
             },
@@ -2317,6 +2496,11 @@
               "type": "boolean",
               "default": true
             },
+            "string-format": {
+              "description": "Enable/disable optimization of string formatting.",
+              "type": "boolean",
+              "default": true
+            },
             "sprintf1": {
               "description": "Optimizes `fmt.Sprintf` with only one argument.",
               "type": "boolean",
@@ -2324,6 +2508,16 @@
             },
             "strconcat": {
               "description": "Optimizes into strings concatenation.",
+              "type": "boolean",
+              "default": true
+            },
+            "bool-format": {
+              "description": "Enable/disable optimization of bool formatting.",
+              "type": "boolean",
+              "default": true
+            },
+            "hex-format": {
+              "description": "Enable/disable optimization of hex formatting.",
               "type": "boolean",
               "default": true
             }
@@ -2462,6 +2656,32 @@
             "enable-all-rules": {
               "type": "boolean",
               "default": false
+            },
+            "directives": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "enum": ["specify-disable-reason"]
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": ["warning", "error"]
+                  },
+                  "exclude": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "arguments": {
+                    "type": "array"
+                  }
+                }
+              }
             },
             "rules": {
               "type": "array",
@@ -2823,24 +3043,118 @@
                   "type": "boolean",
                   "default": false
                 },
+                "ignored-fields": {
+                  "description": "The field names to ignore.",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": ["example"]
+                  }
+                },
                 "rules": {
                   "type": "object",
                   "patternProperties": {
                     "^.+$": {
-                      "enum": [
-                        "camel",
-                        "pascal",
-                        "kebab",
-                        "snake",
-                        "goCamel",
-                        "goPascal",
-                        "goKebab",
-                        "goSnake",
-                        "upper",
-                        "upperSnake",
-                        "lower",
-                        "header"
-                      ]
+                      "$ref": "#/definitions/tagliatelle-cases"
+                    }
+                  }
+                },
+                "extended-rules": {
+                  "description": "Defines the association between tag name and case.",
+                  "type": "object",
+                  "patternProperties": {
+                    "^.+$": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["case"],
+                      "properties": {
+                        "case": {
+                          "$ref": "#/definitions/tagliatelle-cases"
+                        },
+                        "extra-initialisms": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "initialism-overrides": {
+                          "type": "object",
+                          "patternProperties": {
+                            "^.+$": {
+                              "type": "boolean",
+                              "default": false
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "overrides": {
+                  "description": "Overrides the default/root configuration.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["pkg"],
+                    "properties": {
+                      "pkg": {
+                        "description": "A package path.",
+                        "type": "string"
+                      },
+                      "use-field-name": {
+                        "description": "Use the struct field name to check the name of the struct tag.",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "ignored-fields": {
+                        "description": "The field names to ignore.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "examples": ["example"]
+                        }
+                      },
+                      "ignore": {
+                        "description": "Ignore the package (takes precedence over all other configurations).",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "rules": {
+                        "type": "object",
+                        "patternProperties": {
+                          "^.+$": {
+                            "$ref": "#/definitions/tagliatelle-cases"
+                          }
+                        }
+                      },
+                      "extended-rules": {
+                        "description": "Defines the association between tag name and case.",
+                        "type": "object",
+                        "patternProperties": {
+                          "^.+$": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["case"],
+                            "properties": {
+                              "case": {
+                                "$ref": "#/definitions/tagliatelle-cases"
+                              },
+                              "extra-initialisms": {
+                                "type": "boolean",
+                                "default": false
+                              },
+                              "initialism-overrides": {
+                                "type": "object",
+                                "patternProperties": {
+                                  "^.+$": {
+                                    "type": "boolean",
+                                    "default": false
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -2881,18 +3195,24 @@
                   "blank-import",
                   "bool-compare",
                   "compares",
+                  "contains",
                   "empty",
+                  "encoded-compare",
                   "error-is-as",
                   "error-nil",
                   "expected-actual",
                   "float-compare",
+                  "formatter",
                   "go-require",
                   "len",
                   "negative-positive",
                   "nil-compare",
+                  "regexp",
                   "require-error",
+                  "suite-broken-parallel",
                   "suite-dont-use-pkg",
                   "suite-extra-assert-call",
+                  "suite-subtest-run",
                   "suite-thelper",
                   "useless-assert"
                 ]
@@ -2901,18 +3221,24 @@
                 "blank-import",
                 "bool-compare",
                 "compares",
+                "contains",
                 "empty",
+                "encoded-compare",
                 "error-is-as",
                 "error-nil",
                 "expected-actual",
                 "float-compare",
+                "formatter",
                 "go-require",
                 "len",
                 "negative-positive",
                 "nil-compare",
+                "regexp",
                 "require-error",
+                "suite-broken-parallel",
                 "suite-dont-use-pkg",
                 "suite-extra-assert-call",
+                "suite-subtest-run",
                 "useless-assert"
               ]
             },
@@ -2924,18 +3250,24 @@
                   "blank-import",
                   "bool-compare",
                   "compares",
+                  "contains",
                   "empty",
+                  "encoded-compare",
                   "error-is-as",
                   "error-nil",
                   "expected-actual",
                   "float-compare",
+                  "formatter",
                   "go-require",
                   "len",
                   "negative-positive",
                   "nil-compare",
+                  "regexp",
                   "require-error",
+                  "suite-broken-parallel",
                   "suite-dont-use-pkg",
                   "suite-extra-assert-call",
+                  "suite-subtest-run",
                   "suite-thelper",
                   "useless-assert"
                 ],
@@ -2963,6 +3295,22 @@
                   "description": "Regexp for expected variable name.",
                   "type": "string",
                   "default": "(^(exp(ected)?|want(ed)?)([A-Z]\\w*)?$)|(^(\\w*[a-z])?(Exp(ected)?|Want(ed)?)$)"
+                }
+              }
+            },
+            "formatter": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "check-format-string": {
+                  "description": "To enable go vet's printf checks.",
+                  "type": "boolean",
+                  "default": true
+                },
+                "require-f-funcs": {
+                  "description": "To require f-assertions (e.g. assert.Equalf) if format string is used, even if there are no variable-length variables.",
+                  "type": "boolean",
+                  "default": false
                 }
               }
             },
@@ -3168,6 +3516,40 @@
             }
           }
         },
+        "usetesting": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "context-background": {
+              "type": "boolean",
+              "default": true
+            },
+            "context-todo": {
+              "type": "boolean",
+              "default": true
+            },
+            "os-chdir": {
+              "type": "boolean",
+              "default": true
+            },
+            "os-mkdir-temp": {
+              "type": "boolean",
+              "default": true
+            },
+            "os-setenv": {
+              "type": "boolean",
+              "default": true
+            },
+            "os-create-temp": {
+              "type": "boolean",
+              "default": true
+            },
+            "os-temp-dir": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
         "unconvert": {
           "type": "object",
           "additionalProperties": false,
@@ -3206,11 +3588,6 @@
               "description": "",
               "type": "boolean",
               "default": false
-            },
-            "exported-is-used": {
-              "description": "",
-              "type": "boolean",
-              "default": true
             },
             "exported-fields-are-used": {
               "description": "",
@@ -3318,6 +3695,17 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "extra-ignore-sigs": {
+              "description": "An array of strings specifying additional substrings of signatures to ignore.",
+              "default": [
+                ".CustomError(",
+                ".SpecificWrap("
+              ],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "ignoreSigs": {
               "description": "An array of strings which specify substrings of signatures to ignore.",
               "default": [
@@ -3484,7 +3872,8 @@
                 {
                   "properties": {
                     "type": {"enum": ["module"] }
-                  }
+                  },
+                  "required": ["type"]
                 },
                 {
                   "required": ["path"]
@@ -3548,6 +3937,76 @@
           "description": "Enable run of fast linters.",
           "type": "boolean",
           "default": false
+        },
+        "exclusions":{
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated": {
+              "enum": ["strict", "lax", "disable"],
+              "default": "lax"
+            },
+            "warn-unused": {
+              "type": "boolean",
+              "default": false
+            },
+            "default":  {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "comments",
+                  "stdErrorHandling",
+                  "commonFalsePositives",
+                  "legacy"
+                ]
+              }
+            },
+            "rules": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "path-except": {
+                    "type": "string"
+                  },
+                  "linters": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/linters"
+                    }
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
+                  }
+                },
+                "anyOf": [
+                  { "required": ["path"] },
+                  { "required": ["path-except"] },
+                  { "required": ["linters"] },
+                  { "required": ["text"] },
+                  { "required": ["source"] }
+                ]
+              }
+            },
+            "paths":  {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "paths-except":  {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     },
@@ -3636,7 +4095,23 @@
           "description": "The list of ids of default excludes to include or disable.",
           "type": "array",
           "items": {
-            "type": "string"
+            "enum": [
+              "EXC0001",
+              "EXC0002",
+              "EXC0003",
+              "EXC0004",
+              "EXC0005",
+              "EXC0006",
+              "EXC0007",
+              "EXC0008",
+              "EXC0009",
+              "EXC0010",
+              "EXC0011",
+              "EXC0012",
+              "EXC0013",
+              "EXC0014",
+              "EXC0015"
+            ]
           },
           "default": []
         },
@@ -3657,6 +4132,10 @@
           "type": "boolean",
           "default": false
         },
+        "new-from-merge-base": {
+          "description": "Show only new issues created after the best common ancestor (merge-base against HEAD).",
+          "type": "string"
+        },
         "new-from-rev": {
           "description": "Show only new issues created after this git revision.",
           "type": "string"
@@ -3670,6 +4149,11 @@
           "description": "Fix found issues (if it's supported by the linter).",
           "type": "boolean",
           "default": false
+        },
+        "uniq-by-line": {
+          "description": "Make issues output unique by line.",
+          "type": "boolean",
+          "default": true
         },
         "whole-files": {
           "description": "Show issues in any part of update files (requires new-from-rev or new-from-patch).",

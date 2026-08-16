@@ -37,7 +37,7 @@ trap cleanBinaries EXIT
 function install() {
   local VERSION=$1
 
-  curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "./temp-${VERSION}" "${VERSION}"
+  curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b "./temp-${VERSION}" "${VERSION}"
 
   mv "temp-${VERSION}/golangci-lint" "./golangci-lint-${VERSION}"
   rm -rf "temp-${VERSION}"
@@ -53,6 +53,6 @@ install "${VERSION_NEW}"
 
 ## Run
 
-hyperfine \
---prepare "./golangci-lint-${VERSION_OLD} cache clean" "./golangci-lint-${VERSION_OLD} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}" \
---prepare "./golangci-lint-${VERSION_NEW} cache clean" "./golangci-lint-${VERSION_NEW} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}"
+hyperfine --warmup 1 \
+-n "${VERSION_OLD}" --prepare "./golangci-lint-${VERSION_OLD} cache clean" "./golangci-lint-${VERSION_OLD} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}" \
+-n "${VERSION_NEW}" --prepare "./golangci-lint-${VERSION_NEW} cache clean" "./golangci-lint-${VERSION_NEW} run --issues-exit-code 0 --print-issued-lines=false --enable-only ${LINTER}"

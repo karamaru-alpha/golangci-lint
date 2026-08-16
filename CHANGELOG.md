@@ -1,9 +1,325 @@
-Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) and on [Twitter](https://twitter.com/golangci).
+Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) and on [Bluesky](https://bsky.app/profile/golangci-lint.run).
+
+`golangci-lint` is a free and open-source project built by volunteers.
+
+If you value it, consider supporting us, we appreciate it! ❤️
+
+[![Open Collective backers and sponsors](https://img.shields.io/badge/OpenCollective-Donate-blue?logo=opencollective&style=for-the-badge)](https://opencollective.com/golangci-lint)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Donate-blue?logo=github&style=for-the-badge)](https://github.com/sponsors/golangci)
+
+### v1.64.8
+
+* Detects use pf configuration files from golangci-lint v2
+
+### v1.64.7
+
+1. Linters bug fixes
+   * `depguard`: from 2.2.0 to 2.2.1
+   * `dupl`: from 3e9179ac440a to f665c8d69b32
+   * `gosec`: from 2.22.1 to 2.22.2
+   * `staticcheck`: from 0.6.0 to 0.6.1
+2. Documentation
+   * Add GitLab documentation
+
+### v1.64.6
+
+1. Linters bug fixes
+   * `asciicheck`: from 0.4.0 to 0.4.1
+   * `contextcheck`: from 1.1.5 to 1.1.6
+   * `errcheck`: from 1.8.0 to 1.9.0
+   * `exptostd`: from 0.4.1 to 0.4.2
+   * `ginkgolinter`: from 0.19.0 to 0.19.1
+   * `go-exhaustruct`: from 3.3.0 to 3.3.1
+   * `gocheckcompilerdirectives`: from 1.2.1 to 1.3.0
+   * `godot`: from 1.4.20 to 1.5.0
+   * `perfsprint`: from 0.8.1 to 0.8.2
+   * `revive`: from 1.6.1 to 1.7.0
+   * `tagalign`: from 1.4.1 to 1.4.2
+
+### v1.64.5
+
+1. Bug fixes
+   * Add missing flag `new-from-merge-base-flag`
+2. Linters bug fixes
+   * `asciicheck`: from 0.3.0 to 0.4.0
+   * `forcetypeassert`: from 0.1.0 to 0.2.0
+   * `gosec`: from 2.22.0 to 2.22.1
+
+### v1.64.4
+
+1. Linters bug fixes
+   * `gci`: fix standard packages list for go1.24
+
+### v1.64.3
+
+1. Linters bug fixes
+   * `ginkgolinter`: from 0.18.4 to 0.19.0
+   * `go-critic`: from 0.11.5 to 0.12.0
+   * `revive`: from 1.6.0 to 1.6.1
+   * `gci`: fix standard packages list for go1.24
+2. Misc.
+   * Build Docker images with go1.24
+
+### v1.64.2
+
+This is the last minor release of golangci-lint v1.
+The next release will be golangci-lint [v2](https://github.com/golangci/golangci-lint/issues/5300).
+
+1. Enhancements
+   * 🎉 go1.24 support
+   * New `issues.new-from-merge-base` option
+   * New `run.relative-path-mode` option
+2. Linters new features
+   * `copyloopvar`: from 1.1.0 to 1.2.1 (support suggested fixes)
+   * `exptostd`: from 0.3.1 to 0.4.1 (handles `golang.org/x/exp/constraints.Ordered`)
+   * `fatcontext`: from 0.5.3 to 0.7.1 (new option: `check-struct-pointers`)
+   * `perfsprint`: from 0.7.1 to 0.8.1 (new options: `integer-format`, `error-format`, `string-format`, `bool-format`, and `hex-format`)
+   * `revive`: from 1.5.1 to 1.6.0 (new rules: `redundant-build-tag`, `use-errors-new`. New option `early-return.early-return`)
+3. Linters bug fixes
+   * `go-errorlint`: from 1.7.0 to 1.7.1
+   * `gochecknoglobals`: from 0.2.1 to 0.2.2
+   * `godox`: from 006bad1f9d26 to 1.1.0
+   * `gosec`: from 2.21.4 to 2.22.0
+   * `iface`: from 1.3.0 to 1.3.1
+   * `nilnesserr`: from 0.1.1 to 0.1.2
+   * `protogetter`: from 0.3.8 to 0.3.9
+   * `sloglint`: from 0.7.2 to 0.9.0
+   * `spancheck`: fix default `StartSpanMatchersSlice` values
+   * `staticcheck`: from 0.5.1 to 0.6.0
+4. Deprecations
+   * ⚠️ `tenv` is deprecated and replaced by `usetesting.os-setenv: true`.
+   * ⚠️ `exportloopref` deprecation step 2
+5. Misc.
+   * Sanitize severities by output format
+   * Avoid panic with plugin without description
+6. Documentation
+   * Clarify `depguard` configuration
+
+### v1.64.1
+
+Cancelled due to CI failure.
+
+### v1.64.0
+
+Cancelled due to CI failure.
+
+### v1.63.4
+
+1. Linters bug fixes
+   * `dupl`, `gomodguard`, `revive`: keep only Go-files.
+
+### v1.63.3
+
+1. Linters bug fixes
+   * `gofmt`, `gofumpt`, `goimports`, `gci`: panic with several trailing EOL
+   * `goheader`: skip issues with invalid positions
+
+### v1.63.2
+
+1. Linters bug fixes
+   * `gofmt`, `gofumpt`, `goimports`, `gci`: panic with missing trailing EOL
+
+### v1.63.1
+
+1. Linters bug fixes
+   * `cgi`: invalid reports with cgo
+   * `gofumpt`: panic with autofix and cgo
+
+### v1.63.0
+
+1. Enhancements
+   * Add support for SuggestedFixes 🎉 (35 linters can "autofix" reports).
+   * Formatters (`gofmt`, `goimports`, `gofumpt`, `gci`) are applied after the suggested fixes.
+2. New linters
+   * Add `exptostd` linter https://github.com/ldez/exptostd
+   * Add `nilnesserr` linter https://github.com/alingse/nilnesserr
+   * Add `usetesting` linter https://github.com/ldez/usetesting
+3. Linters new features
+   * `gci`: new options: `no-inline-comments`, `no-prefix-comments`
+   * `gomoddirectives`: from 0.2.4 to 0.6.0 (new options: `go-version-pattern`, `toolchain-pattern`,`toolchain-forbidden`, `tool-forbidden`, `go-debug-forbidden`)
+   * `govet`: new `stdversion`, `waitgroup` analyzers
+   * `importas`: allow multiple empty aliases
+   * `loggercheck`: new `slog` option
+   * `recvcheck`: from 0.1.2 to 0.2.0 (new options: `disable-builtin`, `exclusions`)
+   * `tagliatelle`: from 0.5.0 to 0.7.1 (new options: `ignored-fields`, `extended-rules`,`overrides`, `pkg`, `ignore`)
+   * `usestdlibvars`: from 1.27.0 to 1.28.0 (autofix)
+   * `wrapcheck`: from 2.9.0 to 2.10.0 (new option: `extra-ignore-sigs`)
+4. Linters bug fixes
+   * `asciicheck`: from 0.2.0 to 0.3.0
+   * `bodyclose`: from 574207250966 to ed6a65f985e
+   * `funlen`: from 0.1.0 to 0.2.0
+   * `ginkgolinter`: from 0.18.3 to 0.18.4
+   * `gochecksumtype`: from 0.2.0 to 0.3.1
+   * `gocognit`: from 1.1.3 to 1.2.0
+   * `godot`: from 1.4.18 to 1.4.20
+   * `goheader`: report position improvement
+   * `gosec`: handling of global nosec option when it is false
+   * `iface`: from 1.2.1 to 1.3.0
+   * `importas`: from 0.1.0 to 0.2.0
+   * `intrange`: from 0.2.1 to 0.3.0
+   * `makezero`: from 1.1.1 to 1.2.0
+   * `mirror`: from 1.2.0 to 1.3.0
+   * `nilnil`: from 1.0.0 to 1.0.1
+   * `nosprintfhostport`: from 0.1.1 to 0.2.0
+   * `reassign`: from 0.2.0 to 0.3.0
+   * `spancheck`: from 0.6.2 to 0.6.4
+   * `tagalign`: from 1.3.4 to 1.4.1
+   * `wastedassign`: from 2.0.7 to 2.1.0
+   * `whitespace`: from 0.1.1 to 0.2.0
+   * `wsl`: from 4.4.1 to 4.5.0
+5. Deprecations
+   * ⚠️ `output.uniq-by-line` is deprecated and replaced by `issues.uniq-by-line`.
+6. Misc.
+   * Improvements of the help command (color and JSON support).
+   * Removes `decoder`, `sloglint`, `tagalign` from `format` preset.
+   * Enables paths with junction inside Windows.
+   * The timeout is disabled if `run.timeout` <= 0.
+
+### v1.62.2
+
+1. Linters bug fixes
+   * `fatcontext`: from 0.5.2 to 0.5.3
+   * `ginkgolinter`: from 0.18.0 to 0.18.3
+   * `errorlint`: from 1.6.0 to 1.7.0
+   * `iface`: from 1.2.0 to 1.2.1
+   * `revive`: from 1.5.0 to 1.5.1
+   * `testifylint`: from 1.5.0 to 1.5.2
+2. Misc.
+   * fix: ignore cache error when file not found
+
+### v1.62.1
+
+Cancelled due to CI failure.
+
+### v1.62.0
+
+1. New linters
+   * Add `recvcheck` linter https://github.com/raeperd/recvcheck
+   * Add `iface` linter https://github.com/uudashr/iface
+2. Linters new features
+   * `ginkgolinter`: from 0.17.0 to 0.18.0 (new option: `force-succeed`)
+   * `gochecksumtype`: from 0.1.4 to 0.2.0 (new option: `default-signifies-exhaustive`)
+   * `loggercheck`: from 0.9.4 to 0.10.1 (`log/slog` support)
+   * `nilnil`: from 0.1.9 to 1.0.0 (new option: `detect-opposite`)
+   * `revive`: from 1.3.9 to 1.5.0 (new rules: `filename-format`, and `file-length-limit`)
+   * `tenv`: from 1.10.0 to 1.12.1 (handle dot import)
+   * `testifylint`: from 1.4.3 to 1.5.0 (new checkers: `contains`, `encoded-compare`, `regexp`)
+3. Linters bug fixes
+   * `bidichk`: from 0.2.7 to 0.3.2 (important performance improvement)
+   * `canonicalheader`: from 1.1.1 to 1.1.2
+   * `cyclop`: from 1.2.1 to 1.2.3
+   * `dupword`: from 0.1.1 to 0.1.3
+   * `errcheck`: from 1.7.0 to 1.8.0
+   * `errchkjson`: from 0.3.6 to 0.4.0
+   * `errname`: from 0.1.13 to 1.0.0
+   * `gocritic`: from 0.11.4 to 0.11.5
+   * `goprintffuncname`: from 7558a9eaa5af to v0.1.0
+   * `godot`: from 1.4.17 to 1.4.18
+   * `gosec`: from 2.21.2 to 2.21.4
+   * `intrange`: from 0.2.0 to 0.2.1
+   * `musttag`: from 0.12.2 to 0.13.0
+   * `nakedret`: from 2.0.4 to 2.0.5
+   * `noctx`: from 0.0.2 to 0.1.0
+   * `protogetter`: from 0.3.6 to 0.3.8
+4. Deprecations
+   * ⚠️ `execinquery`: deprecation step 2
+   * ⚠️ `gomnd`: deprecation step 2 (replaced by `mnd`)
+5. Misc.
+   * Type sizing when cross-compiling (32-bit).
+   * code-climate: add check_name field
+   * Improve Go version detection
+   * Fix Go version propagation
+6. Documentation
+   * Adds a section about `exclude-dirs-use-default`
+   * Improve 'install from sources' section
+   * Improve FAQ about Go versions
+   * Improve linter/rule/check docs
+   * Improve new linter section
+   * Improve `forbidigo` pattern examples for built-in functions
+
+### v1.61.0
+
+1. Enhancements
+   * Add `junit-xml-extended` format
+   * Exclude Swagger Codegen files by default
+2. Linters new features
+   * `gci`: from 0.13.4 to 0.13.5 (new option `no-lex-order`)
+   * `nolintlint`: remove the empty line in the directive replacement
+3. Linters bug fixes
+   * `dupword`: from 0.0.14 to 0.1.1
+   * `fatcontext`: from 0.4.0 to 0.5.2
+   * `go-ruleguard`: from 0.4.2 to 0fe6f58b47b1 (fix panic with custom linters)
+   * `godot`: from 1.4.16 to 1.4.17
+   * `gomodguard`: from 1.3.3 to 1.3.5
+   * `gosec`: disable temporarily `G407`
+   * `gosec`: from ab3f6c1c83a0 to 2.21.2 (partially fix `G115`)
+   * `intrange`: from 0.1.2 to 0.2.0
+4. Misc.
+    * Improve runtime version parsing
+5. Documentation
+    * Add additional info about `typecheck`
+
+### v1.60.3
+
+1. Updated linters
+   * `gosec`: from 81cda2f91fbe to ab3f6c1c83a0 (fix `G115` false positives)
+2. Misc.
+   * Check that the Go version use to build is greater or equals to the Go version of the project
+
+### v1.60.2
+
+1. Linters new features
+   * `gosec`: from 5f0084eb01a9 to 81cda2f91fbe (adds `G115`, `G405`, `G406`, `G506`, `G507`)
+2. Linters bug fixes
+   * `gofmt`: update to HEAD (go1.22)
+   * `gofumpt`: from 0.6.0 to 0.7.0
+   * `gosec`: fix G602 analyzer
+   * `staticcheck`: from 0.5.0 to 0.5.1
+   * `staticcheck`: propagate Go version
+   * `wrapcheck`: from 2.8.3 to 2.9.0
+3. Deprecations
+   * ⚠️ `exportloopref`: deprecation
+
+### v1.60.1
+
+1. Misc.
+   * 🎉 go1.23 support
+2. Linters new features
+   * `exhaustruct`: from 3.2.0 to 3.3.0 (recognize custom error values in return)
+   * `govet` (`printf`): report non-constant format, no args
+   * `lll`: advertise max line length instead of just reporting failure
+   * `revive`: from 1.3.7 to 1.3.9 (new rule: `comments-density`)
+   * `staticcheck`: from 0.4.7 to 0.5.0
+   * `testifylint`: from 1.3.1 to 1.4.3 (new options: `formatter`, `suite-broken-parallel`, `suite-subtest-run`)
+3. Linters bug fixes
+   * `errorlint`: from 1.5.2 to 1.6.0
+   * `fatcontext`: from 0.2.2 to 0.4.0 (fix false positives for context stored in structs)
+   * `gocognit`: from 1.1.2 to 1.1.3
+   * `gomodguard`: from 1.3.2 to 1.3.3
+   * `sloglint`: from 0.7.1 to 0.7.2
+   * `spancheck`: from 0.6.1 to 0.6.2
+   * `tenv`: from 1.7.1 to 1.10.0 (remove reports on fuzzing)
+   * `tparallel`: from 0.3.1 to 0.3.2
+   * `usestdlibvars`: from 1.26.0 to 1.27.0 (fix false-positive with number used inside a mathematical operations)
+   * `wsl`: from 4.2.1 to 4.4.1
+4. Deprecations
+   * ️⚠️ `unused`: remove `exported-is-used` option
+5. Fixes
+   * SARIF: sanitize level property
+   * ️⚠️ `typecheck` issues should never be ignored
+6. Documentation
+   * Add link on linter without configuration
+   * Remove 'trusted by' page
+   * `wsl` update documentation of the configuration
+
+### v1.60.0
+
+Cancelled due to a CI problem.
 
 ### v1.59.1
 
 1. Updated linters
-   * `go-errorlint`: from 1.5.1 to 1.5.2
+   * `errorlint`: from 1.5.1 to 1.5.2
    * `gomnd`: deprecated configuration compatibility
    * `intrange`: add `style` preset
    * `misspell`: from 0.5.1 to 0.6.0
@@ -15,7 +331,7 @@ Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) 
    * SARIF: init empty result slice
    * SARIF: issue column >= 1
 3. Documentation
-   * update `revive` configuration
+   * `revive`: update documentation of the configuration
 
 ### v1.59.0
 
@@ -24,7 +340,7 @@ Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) 
    * Allow the analysis of generated files (`issues.exclude-generated: disable`)
 2. Updated linters
    * `errcheck`: fix deprecation warning
-   * `go-critic`: from 0.11.3 to 0.11.4
+   * `gocritic`: from 0.11.3 to 0.11.4
    * `gosec`: from 2.20.0 to 5f0084eb01a9 (fix G601 and G113 performance issues)
    * `sloglint`: from 0.6.0 to 0.7.0 (new option `forbidden-keys`)
    * `testifylint`: from 1.2.0 to 1.3.0 (new checker `negative-positive` and new option `go-require.ignore-http-handlers`)
@@ -50,7 +366,7 @@ Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) 
    * `protogetter`: from 0.3.5 to 0.3.6
    * `gochecknoinits`: fix analyzer name
 2. Fixes
-   * Restores previous `gihub-actions` output format (removes GitHub Action problem matchers)
+   * Restores previous `github-actions` output format (removes GitHub Action problem matchers)
 
 ### v1.58.0
 
@@ -89,7 +405,7 @@ Follow the news and releases on [Mastodon](https://fosstodon.org/@golangcilint) 
    * Don't hide `typecheck` errors inside diff processor
 5. Misc.
    * ⚠️ log an error when using previously deprecated linters ([Linter Deprecation Cycle](https://golangci-lint.run/product/roadmap/#linter-deprecation-cycle))
-      * [`deadcode`](https://github.com/remyoudompheng/go-misc/tree/master/deadcode): deprecated since v1.49.0 (2022-08-23).
+      * [`deadcode`](https://github.com/remyoudompheng/go-misc/tree/HEAD/deadcode): deprecated since v1.49.0 (2022-08-23).
       * [`exhaustivestruct`](https://github.com/mbilski/exhaustivestruct): deprecated since v1.46.0 (2022-05-08).
       * [`golint`](https://github.com/golang/lint): deprecated since v1.41.0 (2021-06-15).
       * [`ifshort`](https://github.com/esimonov/ifshort): deprecated since v1.48.0 (2022-08-04).
@@ -146,7 +462,7 @@ GitHub Action (v5.1.0) for golangci-lint:
    * `go-critic`: support of `enable-all` and `disable-all` options
    * `go-spancheck`: from 0.5.2 to 0.5.3
    * `gomodguard`: from 1.3.0 to 1.3.1
-   * `govet`: deprecation of `check-shadowing` ⚠️ 
+   * `govet`: deprecation of `check-shadowing` ⚠️
    * `govet`: disable temporarily `httpresponse` because of a bug https://github.com/golang/go/issues/66259
    * `misspell`: add `extra-words`
    * `musttag`: from 0.8.0 to 0.9.0
@@ -1165,7 +1481,7 @@ IMPORTANT: `varcheck` and `deadcode` has been removed of default linters.
 3. CLI: truncate multiline descriptions
 4. fix: new-from-rev for a large repository
 5. Support RelatedInformation for analysis Diagnostic
-6. use go1.16 to create binaries 
+6. use go1.16 to create binaries
 7. fix: MIPS release
 8. documentation:
    * bump documentation dependencies

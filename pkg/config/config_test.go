@@ -76,7 +76,6 @@ func TestIsGoGreaterThanOrEqual(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
@@ -85,51 +84,46 @@ func TestIsGoGreaterThanOrEqual(t *testing.T) {
 	}
 }
 
-func Test_trimGoVersion(t *testing.T) {
+func Test_parseGoVersion(t *testing.T) {
 	testCases := []struct {
 		desc     string
 		version  string
 		expected string
 	}{
 		{
-			desc:     "patched version",
-			version:  "1.22.0",
-			expected: "1.22",
+			desc:     "empty version",
+			version:  "",
+			expected: "",
 		},
 		{
-			desc:     "minor version",
-			version:  "1.22",
-			expected: "1.22",
+			desc:     "no prefixed version",
+			version:  "1.23.0",
+			expected: "1.23.0",
 		},
 		{
-			desc:     "RC version",
-			version:  "1.22rc1",
-			expected: "1.22",
+			desc:     "semver version",
+			version:  "go1.23.0",
+			expected: "1.23.0",
 		},
 		{
-			desc:     "alpha version",
-			version:  "1.22alpha1",
-			expected: "1.22",
+			desc:     "family version",
+			version:  "go1.23",
+			expected: "1.23",
 		},
 		{
-			desc:     "beta version",
-			version:  "1.22beta1",
-			expected: "1.22",
-		},
-		{
-			desc:     "semver RC version",
-			version:  "1.22.0-rc1",
-			expected: "1.22",
+			desc:     "prerelease version",
+			version:  "go1.24rc1",
+			expected: "1.24",
 		},
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
-			version := trimGoVersion(test.version)
-			assert.Equal(t, test.expected, version)
+			v := parseGoVersion(test.version)
+
+			assert.Equal(t, test.expected, v)
 		})
 	}
 }
